@@ -9,6 +9,7 @@ public final class I18nKeys {
     public static final @NotNull String HEALTH = ModMetadata.MOD_ID + ".health";
     public static final @NotNull String JUMP_HEIGHT = ModMetadata.MOD_ID + ".jump_height";
     public static final @NotNull String SPEED = ModMetadata.MOD_ID + ".speed";
+    public static final @NotNull String AVERAGE = ModMetadata.MOD_ID + ".average";
     public static final @NotNull String SLOTS = ModMetadata.MOD_ID + ".slots";
     public static final @NotNull String BLOCKS = ModMetadata.MOD_ID + ".blocks";
     public static final @NotNull String METERS_PER_SECONDS = ModMetadata.MOD_ID + ".meters_per_seconds";

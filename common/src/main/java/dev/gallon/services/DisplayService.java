@@ -110,6 +110,23 @@ public class DisplayService {
                     )
             );
 
+            // Average
+            textLines.add(
+                    config.getDisplayMinMax() ?
+                            Component.literal(
+                                    I18n.get(I18nKeys.AVERAGE) + ": " +
+                                            ChatFormatting.RED + MIN_AVERAGE +
+                                            ChatFormatting.RESET + "/" +
+                                            getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.3f", stats.average()) +
+                                            ChatFormatting.RESET + "/" +
+                                            ChatFormatting.GREEN + MAX_AVERAGE)
+                            : Component.literal(
+                            I18n.get(I18nKeys.AVERAGE) + ": " +
+                                    getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.3f", stats.average()) +
+                                    ChatFormatting.RESET
+                    )
+            );
+
             // Slots
             if (stats.slots().isPresent()) {
                 textLines.add(
@@ -162,8 +179,8 @@ public class DisplayService {
         int rw = 29;
         int rh = 11;
 
-        // Starts at x=60 by displaying "Stats:" (if it fits the GUI)
-        rx = 60;
+        // Starts at x=30 by displaying "Stats:" (if it fits the GUI)
+        rx = 30;
 
         // 7 is the maximum number of letters for "Stats" to be displayed, because otherwise it overlaps with
         // the horse's name
@@ -217,6 +234,14 @@ public class DisplayService {
             );
         }
 
+        // Average (30 units shift to the right)
+        rx += 24;
+        drawText(guiGraphics,
+                String.format("%,.3f", stats.average()),
+                rx, ry,
+                config.getColoredStats() ? getColorHex(stats.average(), MIN_AVERAGE, MAX_AVERAGE) : 0X444444
+        );
+
         // owner
         if (stats.owner().isPresent()) {
             rx += 30;
@@ -249,6 +274,12 @@ public class DisplayService {
                                 getColorTextFormat(stats.speed(), MIN_SPEED, MAX_SPEED) + String.format("%,.2f", stats.speed()) +
                                 ChatFormatting.RESET + "/" +
                                 ChatFormatting.GREEN + MAX_SPEED + ChatFormatting.RESET + " " +
+                                I18n.get(I18nKeys.AVERAGE) + ": " +
+                                ChatFormatting.RED + MIN_AVERAGE +
+                                ChatFormatting.RESET + "/" +
+                                getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.3f", stats.average()) +
+                                ChatFormatting.RESET + "/" +
+                                ChatFormatting.GREEN + MAX_AVERAGE + ChatFormatting.RESET + " " +
                                 (stats.slots().isEmpty() ? "" : (
                                         I18n.get(I18nKeys.SLOTS) + ": " +
                                                 ChatFormatting.RED + MIN_SLOTS +
@@ -270,6 +301,9 @@ public class DisplayService {
                                 ChatFormatting.RESET + " " +
                                 I18n.get(I18nKeys.SPEED) + ": " +
                                 getColorTextFormat(stats.speed(), MIN_SPEED, MAX_SPEED) + String.format("%,.2f", stats.speed()) +
+                                ChatFormatting.RESET + " " +
+                                I18n.get(I18nKeys.AVERAGE) + ": " +
+                                getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.3f", stats.average()) +
                                 ChatFormatting.RESET + " " +
                                 (stats.slots().isEmpty() ? "" : (
                                         I18n.get(I18nKeys.SLOTS) + ": " +

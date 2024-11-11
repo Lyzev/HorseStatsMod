@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 import java.util.UUID;
 
+import static dev.gallon.domain.HorseStats.*;
 import static dev.gallon.services.UserCacheService.usernameCache;
 
 public class HorseStatsService {
@@ -26,12 +27,16 @@ public class HorseStatsService {
             final Double speed = speedAttr.get().getValue();
             final UUID ownerUUID = horse.getOwnerUUID();
 
+            final double jumpHeight = convertJumpToBlocks(jump);
+            final double speedBlocksPerSeconds = convertSpeedToBlocksPerSeconds(speed);
+
             return Optional.of(
                     new HorseStats(
                             name.map(Component::getString),
                             health,
-                            convertJumpToBlocks(jump),
-                            convertSpeedToBlocksPerSeconds(speed),
+                            jumpHeight,
+                            speedBlocksPerSeconds,
+                            (health / MAX_HEALTH + jumpHeight / MAX_JUMP_HEIGHT + speedBlocksPerSeconds / MAX_SPEED) / 3.0,
                             Optional.ofNullable(horse instanceof Llama ? horse.getInventoryColumns() * 3 : null),
                             Optional.ofNullable(ownerUUID != null ? usernameCache.getUnchecked(ownerUUID).orElse(null) : null)
                     )
