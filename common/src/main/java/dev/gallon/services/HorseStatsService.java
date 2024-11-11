@@ -36,7 +36,7 @@ public class HorseStatsService {
                             health,
                             jumpHeight,
                             speedBlocksPerSeconds,
-                            (health / MAX_HEALTH + jumpHeight / MAX_JUMP_HEIGHT + speedBlocksPerSeconds / MAX_SPEED) / 3.0,
+                            (health / MAX_HEALTH + jumpHeight / MAX_JUMP_HEIGHT + speedBlocksPerSeconds / MAX_SPEED) / 3.0 * 100.0,
                             Optional.ofNullable(horse instanceof Llama ? horse.getInventoryColumns() * 3 : null),
                             Optional.ofNullable(ownerUUID != null ? usernameCache.getUnchecked(ownerUUID).orElse(null) : null)
                     )

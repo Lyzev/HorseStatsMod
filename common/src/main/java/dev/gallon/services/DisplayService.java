@@ -117,12 +117,12 @@ public class DisplayService {
                                     I18n.get(I18nKeys.AVERAGE) + ": " +
                                             ChatFormatting.RED + MIN_AVERAGE +
                                             ChatFormatting.RESET + "/" +
-                                            getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.3f", stats.average()) +
+                                            getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.2f", stats.average()) +
                                             ChatFormatting.RESET + "/" +
                                             ChatFormatting.GREEN + MAX_AVERAGE)
                             : Component.literal(
                             I18n.get(I18nKeys.AVERAGE) + ": " +
-                                    getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.3f", stats.average()) +
+                                    getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.2f", stats.average()) +
                                     ChatFormatting.RESET
                     )
             );
@@ -237,7 +237,7 @@ public class DisplayService {
         // Average (30 units shift to the right)
         rx += 24;
         drawText(guiGraphics,
-                String.format("%,.3f", stats.average()),
+                String.format("%,.2f", stats.average()),
                 rx, ry,
                 config.getColoredStats() ? getColorHex(stats.average(), MIN_AVERAGE, MAX_AVERAGE) : 0X444444
         );
@@ -277,7 +277,7 @@ public class DisplayService {
                                 I18n.get(I18nKeys.AVERAGE) + ": " +
                                 ChatFormatting.RED + MIN_AVERAGE +
                                 ChatFormatting.RESET + "/" +
-                                getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.3f", stats.average()) +
+                                getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.2f", stats.average()) +
                                 ChatFormatting.RESET + "/" +
                                 ChatFormatting.GREEN + MAX_AVERAGE + ChatFormatting.RESET + " " +
                                 (stats.slots().isEmpty() ? "" : (
@@ -303,7 +303,7 @@ public class DisplayService {
                                 getColorTextFormat(stats.speed(), MIN_SPEED, MAX_SPEED) + String.format("%,.2f", stats.speed()) +
                                 ChatFormatting.RESET + " " +
                                 I18n.get(I18nKeys.AVERAGE) + ": " +
-                                getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.3f", stats.average()) +
+                                getColorTextFormat(stats.average(), MIN_AVERAGE, MAX_AVERAGE) + String.format("%,.2f", stats.average()) +
                                 ChatFormatting.RESET + " " +
                                 (stats.slots().isEmpty() ? "" : (
                                         I18n.get(I18nKeys.SLOTS) + ": " +

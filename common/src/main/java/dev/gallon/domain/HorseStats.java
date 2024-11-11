@@ -20,7 +20,7 @@ public record HorseStats(
     public static final @NotNull Double MIN_SPEED = 4.8;
     public static final @NotNull Double MAX_SPEED = 14.5;
     public static final @NotNull Double MIN_AVERAGE = 0.0;
-    public static final @NotNull Double MAX_AVERAGE = 1.0;
+    public static final @NotNull Double MAX_AVERAGE = 100.0;
     public static final @NotNull Integer MIN_SLOTS = 3;
     public static final @NotNull Integer MAX_SLOTS = 15;
 }
